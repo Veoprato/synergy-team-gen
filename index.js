@@ -1,10 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Employee = require('./lib/Employee');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
-
+const generatePage = require('./src/template');
 
 const employees = [];
 
@@ -123,6 +122,49 @@ inquirer.prompt(promptStart())
    employees.push(new Manager(name, id, email, officeNumber));
    return addNewTeamMember(employees);
    })
+    .then(employeeData => {
+        return generatePage(employeeData);
+    })
+    .then(teamPage => {
+        return writeFile(teamPage);
+    })
+    .then(writeFileResponse => {
+        console.log(writeFileResponse);
+        return copyFile();
+    })
+    .then(copyFileResponse => {
+        console.log(copyFileResponse);
+    })
    .catch(err => {
        console.log(err);
    });
+
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/index.html', fileContent, err => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'File created!'
+            });
+        });
+    });
+};
+
+const copyFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.copyFile('./src/style.css', './dist/style.css', err => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'File copied!'
+            });
+        });
+    });
+};
