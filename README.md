@@ -1,6 +1,7 @@
 
   # SyNergy: Team Generator
   [![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)
+  ![Front Page of Website](/assets/page-sc.jpg)
   ## Description
   PLACEHOLDER
   
