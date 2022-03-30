@@ -6,7 +6,7 @@
   PLACEHOLDER
   
   ## Usage
-  PLACEHOLDER
+  Video Walkthrough: https://drive.google.com/file/d/1WK-L36V6DiF2UNcCfPk73acp6894yjGE/view/ 
   
   ## License
   This application is covered under the WTFPL license
